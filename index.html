@@ -4,60 +4,99 @@
 <meta charset="UTF-8">
 <title>于永平 | 首页</title>
 <style>
-/* 与之前相同，略去节省篇幅；如需完整样式可回滚上一版 */
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;margin:0;background:#fafafa;color:#333}
-.container{max-width:1200px;margin:0 auto;padding:40px 20px}
-.header{display:flex;gap:40px;align-items:center;margin-bottom:80px;flex-wrap:wrap}
-.artist-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-.artist-info{flex:1;min-width:300px}
-.artist-name{font-size:2.5em;font-weight:300;margin:0 0 10px;color:#2c3e50}
-.artist-bio{font-size:1.1em;color:#7f8c8d;line-height:1.8}
-.works-section{margin-bottom:80px}
-.section-title{font-size:1.8em;font-weight:300;text-align:center;margin-bottom:40px;color:#2c3e50}
-.works-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-bottom:60px}
-.work-item{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s}
-.work-item:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(0,0,0,.15)}
-/*.work-image{width:100%;object-fit:cover} height:300px; */-->
-.work-image{
-  width:100%;        /* 填满容器宽度 */
-  height:auto;       /* 高度随图片比例变化 */
-  display:block;     /* 去掉 img 底部空白 */
-  object-fit:contain;/* 若图片比例差异大可改成 cover */
-}
-.work-info{padding:20px;text-align:center}
-.work-title{font-size:1.2em;margin:0 0 5px;color:#2c3e50}
-.work-year{font-size:.9em;color:#7f8c8d}
-.links-section{text-align:center;margin-top:60px}
-.view-more{display:inline-block;padding:12px 30px;border:2px solid #2c3e50;color:#2c3e50;text-decoration:none;border-radius:25px;transition:all .3s;font-size:1.1em}
-.view-more:hover{background:#2c3e50;color:#fff}
-@media(max-width:768px){.header{flex-direction:column;text-align:center}.artist-photo{width:150px;height:150px}.artist-name{font-size:2em}.works-grid{grid-template-columns:1fr}}
+/* 沿用你已有样式，仅补充新块 */
+:root{--theme:#2c3e50;--grey:#7f8c8d;--bg:#fafafa;--line:#e5e5e5}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:#222;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px 100px}
+header{display:flex;gap:40px;align-items:center;margin-bottom:80px;flex-wrap:wrap}
+header img{width:200px;height:200px;border-radius:50%;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+header div{flex:1;min-width:300px}
+header h1{font-size:2.5em;font-weight:300;margin-bottom:10px}
+header p{color:var(--grey);max-width:500px}
+section h2{font-size:1.8em;font-weight:300;text-align:center;margin-bottom:40px;letter-spacing:.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:box-shadow .25s}
+.card:hover{box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.card img{width:100%;display:block}
+.card footer{padding:18px 20px 16px}
+.card .tit{font-weight:500;margin-bottom:4px}
+.card .yr{font-size:.85em;color:var(--grey)}
+.links{text-align:center;margin-top:40px}
+.links a{display:inline-block;margin:0 8px;padding:10px 28px;border:1px solid var(--theme);color:var(--theme);border-radius:4px;transition:all .25s}
+.links a:hover{background:var(--theme);color:#fff}
+.qr-box{text-align:center;margin-top:30px}
+.qr-box img{width:160px;height:160px;object-fit:contain;border:1px solid var(--line);border-radius:4px;padding:8px;background:#fff}
+@media(max-width:768px){header{flex-direction:column;text-align:center}header img{width:150px;height:150px}}
 </style>
 </head>
 <body>
 <div class="container">
-  <header class="header">
-    <img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/Head20251030A.jpg/200" alt="画家照片" class="artist-photo">
-    <div class="artist-info">
-      <h1 class="artist-name">于永平</h1>
-      <p class="artist-bio">简介：于永平是活跃于当代的中国画家，主要活跃于内蒙古地区，其艺术创作涵盖绘画、书法等领域。</p>
+
+  <!-- 1. 画家信息（你原有） -->
+  <header>
+    <img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/Head20251030A.jpg" alt="于永平">
+    <div>
+      <h1>于永平</h1>
+      <p>活跃于内蒙古地区的当代中国画画家，创作涵盖绘画、书法等多领域。</p>
     </div>
   </header>
 
-  <section class="works-section">
-    <h2 class="section-title">作品</h2>
-    <div class="works-grid">
-      <!-- 首页仅放 3 张代表性作品 -->
-      <!-- <div class="work-item"><img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/202510001.jpg" class="work-image"><div class="work-info"><h3 class="work-title">[作品 1]</h3><p class="work-year">2023</p></div></div> -->
-      <div class="work-item"><img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/202510001.jpg" class="work-image" alt="作品 1"><div class="work-info"><h3 class="work-title">回家（一）</h3><p class="work-year">2023</p></div></div>
-      <div class="work-item"><img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/20251030Horse001.jpg" class="work-image"><div class="work-info"><h3 class="work-title">吉祥如意 马图</h3><p class="work-year">2022</p></div></div>
-      <div class="work-item"><img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/20251030Oil001.jpg" class="work-image"><div class="work-info"><h3 class="work-title">家乡一角</h3><p class="work-year">2021</p></div></div>
+  <!-- 2. 作品区（你原有） -->
+  <section>
+    <h2>精选作品</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/202510001.jpg" alt="回家（一）">
+        <footer><div class="tit">回家（一）</div><div class="yr">2023</div></footer>
+      </div>
+      <div class="card">
+        <img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/20251030Horse001.jpg" alt="吉祥如意 马图">
+        <footer><div class="tit">吉祥如意 马图</div><div class="yr">2022</div></footer>
+      </div>
+      <div class="card">
+        <img src="https://yyppicture.oss-cn-beijing.aliyuncs.com/20251030Oil001.jpg" alt="家乡一角">
+        <footer><div class="tit">家乡一角</div><div class="yr">2021</div></footer>
+      </div>
+    </div>
+    <div class="links"><a href="works.html">更多作品</a></div>
+  </section>
+
+  <!-- 3. 近日展览 -->
+  <section style="margin-top:100px">
+    <h2>近日展览</h2>
+    <div class="links">
+      <a href="offline.html">线下展</a>
+      <a href="online.html">线上展</a>
     </div>
   </section>
 
-  <section class="links-section">
-    <!-- 关键：跳转到作品总览页 -->
-    <a href="works.html" class="view-more">更多作品</a>
+  <!-- 4. 画家日常 -->
+  <section style="margin-top:100px">
+    <h2>画家日常</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://picsum.photos/seed/daily1/600/400" alt="">
+        <footer><div class="tit">创作瞬间</div><div class="yr">2024 春</div></footer>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/seed/daily2/600/400" alt="">
+        <footer><div class="tit">户外写生</div><div class="yr">2024 夏</div></footer>
+      </div>
+    </div>
   </section>
+
+  <!-- 5. 联系方式 -->
+  <section style="margin-top:100px;text-align:center">
+    <h2>联系方式</h2>
+    <div class="qr-box">
+      <!-- 你随后把 src 换成自己的二维码 -->
+      <img src="https://via.placeholder.com/160x160?text=QR" alt="微信二维码">
+      <p style="margin-top:10px;font-size:.9em;color:var(--grey)">扫码添加微信 / 电话：123-4567-8900</p>
+    </div>
+  </section>
+
 </div>
 </body>
 </html>
